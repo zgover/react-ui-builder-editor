@@ -372,7 +372,7 @@ const visitToFindByText = (text) => ({nodeModel}) => {
   const result = [];
   if (nodeModel) {
     const {key, props: {displayName}} = nodeModel;
-    if (text && displayName && displayName.trim().indexOf(text.trim()) === 0) {
+    if (text && displayName && displayName.trim().toLowerCase().indexOf(text.trim().toLowerCase()) === 0) {
       result.push(key);
     }
   }

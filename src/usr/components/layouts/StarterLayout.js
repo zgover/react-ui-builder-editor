@@ -57,7 +57,11 @@ class StarterLayout extends React.Component {
     if (projectConfigStatus !== prevProps.projectConfigStatus) {
       const { status } = projectConfigStatus;
       if (status === 'initialSetup') {
+        console.info('Status is initial setup');
         this.handleResetProject();
+      } else if (status === 'existingSetup') {
+        console.info('Status is existing project');
+        this.handleContinueProject();
       }
     }
   }
@@ -86,19 +90,10 @@ class StarterLayout extends React.Component {
             {children}
           </React.Fragment>
         );
-      } else if (status === 'existingSetup') {
-        return (
-          <StatusScreen
-            statusText="It seems that you were working with the demo project before"
-            isRequestToContinue={true}
-            onReset={this.handleResetProject}
-            onContinue={this.handleContinueProject}
-          />
-        );
       } else if (status === 'loading') {
         return (
           <StatusScreen
-            statusText="It may take about 30 seconds. Please wait."
+            statusText="Please wait. Loading..."
           />
         );
       } else if (status === 'error') {

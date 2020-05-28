@@ -43,13 +43,20 @@ export const restoreExpandedResourceKeys = () => async (dispatch) => {
     if (expandedResourceKeys) {
       dispatch({expandedResourceKeys: expandedResourceKeys});
     } else {
-      dispatch({expandedResourceKeys: {
+      let defaultKeys = {
         [constants.GRAPH_MODEL_FLOWS_ROOT_KEY]: true,
         [constants.GRAPH_MODEL_PAGES_ROOT_KEY]: true,
         [constants.GRAPH_MODEL_COMPONENTS_ROOT_KEY]: true,
         [constants.GRAPH_MODEL_USER_FUNCTIONS_ROOT_KEY]: true,
         [constants.GRAPH_MODEL_TEMPLATES_ROOT_KEY]: true,
-      }});
+      };
+      const newExpandedResourceKeys =
+        globalStore.merge(
+          constants.STORAGE_RECORD_EXPANDED_RESOURCE_KEYS,
+          defaultKeys,
+          true
+        );
+      dispatch({expandedResourceKeys: newExpandedResourceKeys});
     }
   } catch (e) {
     // do nothing;

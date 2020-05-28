@@ -1373,22 +1373,22 @@ class ResourcesTreeView extends React.Component {
     const {
       clipboardItems,
       clipboardItemsCount,
-      templates,
-      templatesCount,
-      flows,
-      flowsCount,
+      // templates,
+      // templatesCount,
+      // flows,
+      // flowsCount,
       pages,
       pagesCount,
       userComponents,
       userComponentsCount,
-      userFunctions,
-      userFunctionsCount
+      // userFunctions,
+      // userFunctionsCount
     } = resourcesTreeViewObject;
     // sort roots in the custom order
     [
       { object: clipboardItems, count: clipboardItemsCount },
       { object: userComponents, count: userComponentsCount },
-      { object: templates, count: templatesCount },
+      // { object: templates, count: templatesCount },
       { object: pages, count: pagesCount },
       // { object: flows, count: flowsCount },
       // { object: userFunctions, count: userFunctionsCount }

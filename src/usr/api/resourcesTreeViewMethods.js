@@ -16,6 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import isEmpty from 'lodash/isEmpty';
 import constants from '../../commons/constants';
 import globalStore from '../core/config/globalStore';
 import * as projectObjectFactory from '../core/project/projectObjectFactory';
@@ -40,7 +41,7 @@ export const restoreStorageRecords = () => async (dispatch) => {
 export const restoreExpandedResourceKeys = () => async (dispatch) => {
   try {
     const expandedResourceKeys = await globalStore.restore(constants.STORAGE_RECORD_EXPANDED_RESOURCE_KEYS);
-    if (expandedResourceKeys) {
+    if (expandedResourceKeys && !isEmpty(expandedResourceKeys)) {
       dispatch({expandedResourceKeys: expandedResourceKeys});
     } else {
       let defaultKeys = {
@@ -59,6 +60,7 @@ export const restoreExpandedResourceKeys = () => async (dispatch) => {
       dispatch({expandedResourceKeys: newExpandedResourceKeys});
     }
   } catch (e) {
+    console.error(e.message);
     // do nothing;
   }
 };

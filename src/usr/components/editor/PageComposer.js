@@ -863,14 +863,14 @@ class PageComposer extends React.Component {
               }
             />
             <CommonToolbarDivider/>
-            <ToolbarButton
-              iconType="Widgets"
-              title="Save Template"
-              disabled={!selectedComponentModel}
-              onClick={this.handleSaveAsTemplate}
-              tooltip="Save the selected element as a template"
-            />
-            <CommonToolbarDivider/>
+            {/*<ToolbarButton*/}
+            {/*  iconType="Widgets"*/}
+            {/*  title="Save Template"*/}
+            {/*  disabled={!selectedComponentModel}*/}
+            {/*  onClick={this.handleSaveAsTemplate}*/}
+            {/*  tooltip="Save the selected element as a template"*/}
+            {/*/>*/}
+            {/*<CommonToolbarDivider/>*/}
             <ToolbarButton
               iconType={constants.MEDIA_WIDTHS[iFrameWidthIndex].iconType}
               title={constants.MEDIA_WIDTHS[iFrameWidthIndex].label}

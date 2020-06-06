@@ -58,13 +58,23 @@ export function register(config) {
 
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
-        navigator.serviceWorker.ready.then(() => {
+        navigator.serviceWorker.ready.then((registration) => {
+          // Execute callback
+          if (config && config.onUpdate) {
+            config.onReady(registration);
+          }
           console.log(
             'This web app is being served cache-first by a service ' +
               'worker. To learn more, visit https://bit.ly/CRA-PWA'
           );
         });
       } else {
+        navigator.serviceWorker.ready.then((registration) => {
+          // Execute callback
+          if (config && config.onUpdate) {
+            config.onReady(registration);
+          }
+        });
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, config);
       }

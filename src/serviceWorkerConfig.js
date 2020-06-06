@@ -31,4 +31,7 @@ export default {
   onSuccess: registration => {
     console.log(registration)
   },
+  onReady: (registration) => {
+    registration.active.postMessage({type: 'ON_WINDOW_LOAD'});
+  },
 }
